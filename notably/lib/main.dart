@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+//import 'package:notably/speech_to_text.dart';
+import 'package:notably/text_editor.dart';
+import 'package:notably/speech_to_text.dart';
+
 
 void main() {
   runApp(
@@ -29,7 +33,7 @@ class RecordScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-                height: 50,
+                height: 150,
                 width: 150,
                 margin: EdgeInsets.symmetric(vertical: 20),
                 padding: EdgeInsets.all(15),
@@ -49,26 +53,52 @@ class RecordScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
+          
+                  //crossAxisAlignment: CrossAxisAlignment.end,
+                  //mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
-                      'Start',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                    SizedBox(width: 5),
-                    Icon(
-                      Icons.play_arrow,
-                      size: 28,
-                      color: Colors.white,
-                    ),
+                   RaisedButton (
+            onPressed: () {
+              Navigator.push(
+              context,
+              //MaterialPageRoute(builder: (context) => SpeechToText()),
+              MaterialPageRoute(builder: (context) => TextEditor()),
+            
+            );
+            },
+            child: Text(
+              'Go',
+              style: TextStyle (
+                fontSize: 20,
+                color: Colors.black
+              ),
+            )
+          ),
+          RaisedButton (
+            onPressed: () {
+              Navigator.push(
+              context,
+              //MaterialPageRoute(builder: (context) => SpeechToText()),
+              MaterialPageRoute(builder: (context) => SpeechConvertor()),
+            
+            );
+            },
+            child: Text(
+              'Speak',
+              style: TextStyle (
+                fontSize: 20,
+                color: Colors.black
+              ),
+            )
+          )
                   ],
                 )),
-            Container(),
+            Container(
+
+            ),
           ],
         ),
       ),
