@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_recognition_error.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:notably/text_editor.dart';
 
 //void main() => runApp(MyApp());
 
@@ -22,8 +23,8 @@ class _SpeechConvertor extends State<SpeechConvertor> {
   String lastWords = "";
   String lastError = "";
   String lastStatus = "";
-  String _currentLocaleId = "";
-  List<LocaleName> _localeNames = [];
+  //String _currentLocaleId = "";
+  //List<LocaleName> _localeNames = [];
   final SpeechToText speech = SpeechToText();
 
   @override
@@ -35,12 +36,13 @@ class _SpeechConvertor extends State<SpeechConvertor> {
   Future<void> initSpeechState() async {
     bool hasSpeech = await speech.initialize(
         onError: errorListener, onStatus: statusListener);
+    /*    
     if (hasSpeech) {
       _localeNames = await speech.locales();
 
       var systemLocale = await speech.systemLocale();
       _currentLocaleId = systemLocale.localeId;
-    }
+    }*/
 
     if (!mounted) return;
 
@@ -57,12 +59,13 @@ class _SpeechConvertor extends State<SpeechConvertor> {
           title: const Text('Speech to Text Example'),
         ),
         body: Column(children: [
+          /*
           Center(
             child: Text(
               'Speech recognition available',
               style: TextStyle(fontSize: 22.0),
             ),
-          ),
+          ),*/
           Container(
             child: Column(
               children: <Widget>[
@@ -97,6 +100,7 @@ class _SpeechConvertor extends State<SpeechConvertor> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
+                    /*
                     DropdownButton(
                       onChanged: (selectedVal) => _switchLang(selectedVal),
                       value: _currentLocaleId,
@@ -108,22 +112,23 @@ class _SpeechConvertor extends State<SpeechConvertor> {
                             ),
                           )
                           .toList(),
-                    ),
+                    ),*/
                   ],
                 )
               ],
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 2,
             child: Column(
               children: <Widget>[
+                /*
                 Center(
                   child: Text(
                     'Recognized Words',
                     style: TextStyle(fontSize: 22.0),
                   ),
-                ),
+                ),*/
                 Expanded(
                   child: Stack(
                     children: <Widget>[
@@ -159,6 +164,7 @@ class _SpeechConvertor extends State<SpeechConvertor> {
                           ),
                         ),
                       ),
+                      
                     ],
                   ),
                 ),
@@ -177,6 +183,23 @@ class _SpeechConvertor extends State<SpeechConvertor> {
                 ),
                 Center(
                   child: Text(lastError),
+                ),
+                RaisedButton(
+                  child: //Icon(Icons.mic),
+                      Text('Go to Editor',
+            style: TextStyle(
+              fontSize: 25,
+              //fontWeight: FontWeight.bold,
+              color: Colors.black87
+            )
+            ),
+                  onPressed: () {
+                    Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TextEditor(data: lastWords)),
+            );  
+                  },
+                  //backgroundColor: Colors.pink,
                 ),
               ],
             ),
@@ -258,11 +281,12 @@ class _SpeechConvertor extends State<SpeechConvertor> {
       lastStatus = "$status";
     });
   }
-
+  /*
   _switchLang(selectedVal) {
     setState(() {
       _currentLocaleId = selectedVal;
     });
     print(selectedVal);
   }
+  */
 }
