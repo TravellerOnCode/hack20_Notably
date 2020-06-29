@@ -5,9 +5,11 @@ import 'dart:async';
 import 'package:file/local.dart';
 
 import 'package:flutter_audio_recorder/flutter_audio_recorder.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:notably/blocs/theme_bloc/theme_bloc.dart';
+
 
 class RecordScreen extends StatefulWidget {
   @override
@@ -23,7 +25,8 @@ class _RecordScreenState extends State<RecordScreen> {
 
   List<double> values = [for (var i = 0; i < 50; i++) 0];
 
-  
+
+
 
   @override
   void initState() {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:notably/blocs/authentication_bloc/authentication_bloc.dart';
@@ -8,10 +9,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 enum Doc { note, folder }
 
+
 class HomeScreen extends StatelessWidget {
   final String name;
 
   HomeScreen({Key key, @required this.name}) : super(key: key);
+
 
   final tags = [
     {
@@ -211,3 +214,4 @@ class StructurePainter extends CustomPainter {
   @override
   bool shouldRepaint(StructurePainter oldDelegate) => false;
 }
+
