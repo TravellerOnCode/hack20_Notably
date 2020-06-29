@@ -5,7 +5,11 @@ import 'dart:async';
 import 'package:file/local.dart';
 
 import 'package:flutter_audio_recorder/flutter_audio_recorder.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:notably/blocs/theme_bloc/theme_bloc.dart';
+
 
 class RecordScreen extends StatefulWidget {
   @override
@@ -21,30 +25,8 @@ class _RecordScreenState extends State<RecordScreen> {
 
   List<double> values = [for (var i = 0; i < 50; i++) 0];
 
-  final List<BoxShadow> _shadowBox = [
-    BoxShadow(
-      color: Color(0xff101111),
-      offset: Offset(3, 3),
-      blurRadius: 4,
-    ),
-    BoxShadow(
-      color: Color(0xff25262b),
-      offset: Offset(-3, -3),
-      blurRadius: 4,
-    ),
-    BoxShadow(
-      color: Color(0xffcbcbcb),
-      offset: Offset(3, 3),
-      blurRadius: 4,
-      spreadRadius: -6,
-    ),
-    BoxShadow(
-      color: Color(0xffffffff),
-      offset: Offset(-3, -3),
-      blurRadius: 4,
-      spreadRadius: -6,
-    ),
-  ];
+
+
 
   @override
   void initState() {
@@ -134,6 +116,7 @@ class _RecordScreenState extends State<RecordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final _shadowBox = BlocProvider.of<ThemeBloc>(context).state.shadows;
     final mediaQuery = MediaQuery.of(context);
     final theme = Theme.of(context);
     return Scaffold(
