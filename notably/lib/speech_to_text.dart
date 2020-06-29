@@ -15,6 +15,7 @@ class SpeechConvertor extends StatefulWidget {
 
 class _SpeechConvertor extends State<SpeechConvertor> {
   bool _hasSpeech = false;
+  //bool _hasSpeech = true;
   double level = 0.0;
   double minSoundLevel = 50000;
   double maxSoundLevel = -50000;
@@ -28,6 +29,7 @@ class _SpeechConvertor extends State<SpeechConvertor> {
   @override
   void initState() {
     super.initState();
+    //initSpeechState();
   }
 
   Future<void> initSpeechState() async {
@@ -204,10 +206,11 @@ class _SpeechConvertor extends State<SpeechConvertor> {
     lastError = "";
     speech.listen(
         onResult: resultListener,
-        listenFor: Duration(seconds: 10),
-        localeId: _currentLocaleId,
+        listenFor: Duration(seconds: 300),
+        //localeId: _currentLocaleId,
+        localeId: 'en_GB',
         onSoundLevelChange: soundLevelListener,
-        cancelOnError: true,
+        cancelOnError: false,
         partialResults: true);
     setState(() {});
   }

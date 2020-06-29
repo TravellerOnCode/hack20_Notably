@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notably/image_ocr.dart';
 //import 'package:notably/speech_to_text.dart';
 import 'package:notably/text_editor.dart';
 import 'package:notably/speech_to_text.dart';
@@ -33,7 +34,7 @@ class RecordScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-                height: 150,
+                height: 300,
                 width: 150,
                 margin: EdgeInsets.symmetric(vertical: 20),
                 padding: EdgeInsets.all(15),
@@ -88,6 +89,23 @@ class RecordScreen extends StatelessWidget {
             },
             child: Text(
               'Speak',
+              style: TextStyle (
+                fontSize: 20,
+                color: Colors.black
+              ),
+            )
+          ),
+          RaisedButton (
+            onPressed: () {
+              Navigator.push(
+              context,
+              //MaterialPageRoute(builder: (context) => SpeechToText()),
+              MaterialPageRoute(builder: (context) => LoadImage()),
+            
+            );
+            },
+            child: Text(
+              'Image',
               style: TextStyle (
                 fontSize: 20,
                 color: Colors.black
